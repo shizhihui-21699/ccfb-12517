@@ -1,0 +1,81 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+/**
+ * 独立运行入口(不依赖 Laravel):
+ *   php bin/audit [--rules=data/sample_rules.json] [--json=report.json] [--no-split]
+ */
+
+// 简易 PSR-4 自动加载(无 composer 也能跑;有 composer 时由 vendor/autoload.php 接管)
+$vendorAutoload = __DIR__ . '/../vendor/autoload.php';
+if (is_file($vendorAutoload)) {
+    require $vendorAutoload;
+} else {
+    spl_autoload_register(function (string $class): void {
+        $prefix = 'PromoAudit\\';
+        if (str_starts_with($class, $prefix)) {
+            $path = __DIR__ . '/../src/' . str_replace('\\', '/', substr($class, strlen($prefix))) . '.php';
+            if (is_file($path)) {
+                require $path;
+            }
+        }
+    });
+}
+
+use PromoAudit\AuditLoader;
+use PromoAudit\Search\Explorer;
+use PromoAudit\Search\Reporter;
+
+$options = getopt('', ['rules:', 'json:', 'no-split', 'help']);
+if (isset($options['help'])) {
+    fwrite(STDOUT, <<<TXT
+    优惠叠加漏洞排查工具
+    用法: php bin/audit [--rules=PATH] [--json=PATH] [--no-split]
+      --rules=PATH   规则 JSON 文件(默认 data/sample_rules.json)
+      --json=PATH    把 JSON 格式报告写到指定文件
+      --no-split     关闭拆单搜索,只审单订单
+    TXT . PHP_EOL);
+    exit(0);
+}
+
+$rulesPath = $options['rules'] ?? __DIR__ . '/../data/sample_rules.json';
+$loaded = AuditLoader::fromJsonFile($rulesPath);
+
+$search = $loaded['search'];
+if (isset($options['no-split'])) {
+    $search = new \PromoAudit\Search\SearchConfig(
+        memberLevels: $search->memberLevels,
+        maxDistinctSkus: $search->maxDistinctSkus,
+        maxQtyPerSku: $search->maxQtyPerSku,
+        maxTotalItems: $search->maxTotalItems,
+        userPoints: $search->userPoints,
+        clampAtZero: $search->clampAtZero,
+        enforceExclusions: $search->enforceExclusions,
+        auditSplitOrders: false,
+        maxFindings: $search->maxFindings,
+    );
+}
+
+$start = microtime(true);
+$explorer = new Explorer(
+    $loaded['catalog'],
+    $loaded['rules'],
+    $loaded['member_prices'],
+    $loaded['exclusions'],
+    $search,
+);
+$result = $explorer->run();
+$elapsed = microtime(true) - $start;
+
+$reporter = new Reporter($loaded['catalog']);
+fwrite(STDOUT, $reporter->toConsole($result['findings'], $result['evaluations'], $result['carts']));
+fwrite(STDOUT, sprintf("耗时 %.2f s" . PHP_EOL, $elapsed));
+
+if (isset($options['json'])) {
+    file_put_contents($options['json'], $reporter->toJson($result['findings'], $result['evaluations'], $result['carts']));
+    fwrite(STDOUT, "JSON 报告已写入 {$options['json']}" . PHP_EOL);
+}
+
+exit($result['findings'] === [] ? 0 : 1); // 有发现时退出码 1,方便接 CI

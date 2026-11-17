@@ -1,0 +1,57 @@
+{
+  "products": [
+    {"id": "cola",    "name": "可乐",   "category": "drink",   "price": 3.00,  "cost": 2.00},
+    {"id": "water",   "name": "矿泉水", "category": "drink",   "price": 2.00,  "cost": 0.80},
+    {"id": "milk",    "name": "牛奶",   "category": "drink",   "price": 12.00, "cost": 9.00},
+    {"id": "chips",   "name": "薯片",   "category": "food",    "price": 6.00,  "cost": 4.00},
+    {"id": "biscuit", "name": "饼干",   "category": "food",    "price": 9.00,  "cost": 5.00},
+    {"id": "candy",   "name": "糖果",   "category": "food",    "price": 5.00,  "cost": 3.50},
+    {"id": "shirt",   "name": "T恤",    "category": "apparel", "price": 79.00, "cost": 45.00},
+    {"id": "pants",   "name": "长裤",   "category": "apparel", "price": 129.00,"cost": 70.00}
+  ],
+  "member_prices": {
+    "gold": {"milk": 10.00, "shirt": 69.00}
+  },
+  "rules": [
+    {"id": "FR1", "type": "full_reduction", "threshold": 100, "reduction": 25,
+     "categories": null, "threshold_base": "original",
+     "_comment": "全场满100减25,按订单触发一次 —— 拆单可多次触发"},
+
+    {"id": "FR2", "type": "full_reduction", "threshold": 30, "reduction": 20,
+     "categories": ["drink"], "threshold_base": "original",
+     "_comment": "饮品满30减20(大促)"},
+
+    {"id": "FR4", "type": "full_reduction", "threshold": 20, "reduction": 12,
+     "categories": ["drink"], "threshold_base": "original",
+     "_comment": "新人饮品券满20减12 —— 与 FR2 同品类且未配互斥,叠穿重灾区"},
+
+    {"id": "FR3", "type": "full_reduction", "threshold": 20, "reduction": 8,
+     "categories": ["food"], "threshold_base": "original"},
+
+    {"id": "DC1", "type": "discount_coupon", "rate": 0.8, "threshold": 50, "cap": 40,
+     "categories": null, "threshold_base": "original",
+     "_comment": "全场8折券,满50可用,封顶40"},
+
+    {"id": "DC2", "type": "discount_coupon", "rate": 0.7, "threshold": 0, "cap": 80,
+     "categories": ["apparel"], "threshold_base": "original",
+     "_comment": "服饰7折券,封顶80,与 DC1 互斥"},
+
+    {"id": "PT1", "type": "points", "points_per_yuan": 100, "max_percent": 0.5,
+     "_comment": "积分抵现:100分=1元,最高抵当前应付50%"}
+  ],
+  "exclusions": [
+    ["DC1", "DC2"],
+    ["FR2", "FR3"]
+  ],
+  "search": {
+    "member_levels": ["none", "gold"],
+    "max_distinct_skus": 4,
+    "max_qty_per_sku": 2,
+    "max_total_items": 8,
+    "user_points": 2000,
+    "clamp_at_zero": false,
+    "enforce_exclusions": true,
+    "audit_split_orders": true,
+    "max_findings": 50
+  }
+}

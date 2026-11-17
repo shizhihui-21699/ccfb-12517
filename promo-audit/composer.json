@@ -1,0 +1,14 @@
+{
+    "name": "mall/promo-audit",
+    "description": "优惠叠加漏洞排查工具:穷举商品组合、券顺序与拆单方式,找出零付/负付/低于成本/绕过互斥的下单路径",
+    "type": "library",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "PromoAudit\\": "src/"
+        }
+    },
+    "bin": ["bin/audit"]
+}

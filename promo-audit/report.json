@@ -1,0 +1,2663 @@
+{
+    "summary": {
+        "carts": 1696,
+        "evaluations": 1063636,
+        "findings": 39
+    },
+    "findings": [
+        {
+            "type": "non_positive",
+            "type_label": "实付为零/负数",
+            "severity": 4,
+            "total_final": -17,
+            "total_cost": 22,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x2, 牛奶(milk)x2",
+                "依次使用: PT1 → FR2 → FR4",
+                "应付 -17.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR2",
+                        "FR4"
+                    ],
+                    "gross": 30,
+                    "final": -17,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 15,
+                            "payable_after": 15
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": -5
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": -17
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "non_positive",
+            "type_label": "实付为零/负数",
+            "severity": 4,
+            "total_final": -12,
+            "total_cost": 32.8,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x2, 矿泉水(water)x1, 牛奶(milk)x2, 饼干(biscuit)x2",
+                "依次使用: DC1 → PT1 → FR2 → FR4",
+                "应付 -12.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "water": 1,
+                        "milk": 2,
+                        "biscuit": 2
+                    },
+                    "sequence": [
+                        "DC1",
+                        "PT1",
+                        "FR2",
+                        "FR4"
+                    ],
+                    "gross": 50,
+                    "final": -12,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 10,
+                            "payable_after": 40
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 0
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": -12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "non_positive",
+            "type_label": "实付为零/负数",
+            "severity": 4,
+            "total_final": -2,
+            "total_cost": 18,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2",
+                "依次使用: PT1 → FR4",
+                "应付 -2.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR4"
+                    ],
+                    "gross": 20,
+                    "final": -2,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 10,
+                            "payable_after": 10
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": -2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "non_positive",
+            "type_label": "实付为零/负数",
+            "severity": 4,
+            "total_final": 0,
+            "total_cost": 30.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 薯片(chips)x1, 饼干(biscuit)x1, 糖果(candy)x1",
+                "依次使用: PT1 → FR4 → FR3",
+                "应付 0.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 1,
+                        "biscuit": 1,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR4",
+                        "FR3"
+                    ],
+                    "gross": 40,
+                    "final": 0,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 8
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "non_positive",
+            "type_label": "实付为零/负数",
+            "severity": 4,
+            "total_final": 0,
+            "total_cost": 33.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x1, 牛奶(milk)x2, 饼干(biscuit)x2, 糖果(candy)x1",
+                "依次使用: DC1 → PT1 → FR4 → FR3",
+                "应付 0.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 1,
+                        "milk": 2,
+                        "biscuit": 2,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "PT1",
+                        "FR4",
+                        "FR3"
+                    ],
+                    "gross": 50,
+                    "final": 0,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 10,
+                            "payable_after": 40
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 8
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "exclusion_bypass",
+            "type_label": "绕过互斥限制",
+            "severity": 3,
+            "total_final": 65.3,
+            "total_cost": 106,
+            "legal_single_best": 75.3,
+            "notes": [
+                "拆单合计 65.30 元 < 单订单最优 75.30 元",
+                "互斥规则 DC1 与 DC2 被拆到两个订单同时使用",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 使用「gold」会员账号",
+                "订单1: 加购: 牛奶(milk)x2, 薯片(chips)x2, 饼干(biscuit)x2",
+                "订单1: 依次使用: DC1 → PT1 → FR4 → FR3",
+                "订单1: 应付 0.00 元",
+                "订单2: 使用「gold」会员账号",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 65.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 2,
+                        "biscuit": 2
+                    },
+                    "sequence": [
+                        "DC1",
+                        "PT1",
+                        "FR4",
+                        "FR3"
+                    ],
+                    "gross": 50,
+                    "final": 0,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 10,
+                            "payable_after": 40
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 8
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 0
+                        }
+                    ]
+                },
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "exclusion_bypass",
+            "type_label": "绕过互斥限制",
+            "severity": 3,
+            "total_final": 75.5,
+            "total_cost": 137,
+            "legal_single_best": 98.6,
+            "notes": [
+                "拆单合计 75.50 元 < 单订单最优 98.60 元",
+                "互斥规则 DC1 与 DC2 被拆到两个订单同时使用",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 可乐(cola)x2, 牛奶(milk)x2, T恤(shirt)x1",
+                "订单1: 依次使用: DC1 → FR1 → FR2 → PT1 → FR4",
+                "订单1: 应付 10.20 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 75.50 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR2",
+                        "PT1",
+                        "FR4"
+                    ],
+                    "gross": 109,
+                    "final": 10.2,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 21.8,
+                            "payable_after": 87.2
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 62.2
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 42.2
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 22.2
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 10.2
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "exclusion_bypass",
+            "type_label": "绕过互斥限制",
+            "severity": 3,
+            "total_final": 90.7,
+            "total_cost": 133,
+            "legal_single_best": 112.6,
+            "notes": [
+                "拆单合计 90.70 元 < 单订单最优 112.60 元",
+                "互斥规则 DC1 与 DC2 被拆到两个订单同时使用",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 牛奶(milk)x2, T恤(shirt)x1",
+                "订单1: 依次使用: DC1 → FR1 → FR4 → PT1",
+                "订单1: 应付 25.40 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 90.70 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 103,
+                    "final": 25.4,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 20.6,
+                            "payable_after": 82.4
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 57.4
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 45.4
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 25.4
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "exclusion_bypass",
+            "type_label": "绕过互斥限制",
+            "severity": 3,
+            "total_final": 92.3,
+            "total_cost": 128,
+            "legal_single_best": 113.6,
+            "notes": [
+                "拆单合计 92.30 元 < 单订单最优 113.60 元",
+                "互斥规则 DC1 与 DC2 被拆到两个订单同时使用",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "订单1: 依次使用: DC1 → FR1 → FR3 → PT1",
+                "订单1: 应付 27.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 92.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 100,
+                    "final": 27,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 20,
+                            "payable_after": 80
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 55
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 47
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 27
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "exclusion_bypass",
+            "type_label": "绕过互斥限制",
+            "severity": 3,
+            "total_final": 123.5,
+            "total_cost": 140,
+            "legal_single_best": 135.6,
+            "notes": [
+                "拆单合计 123.50 元 < 单订单最优 135.60 元",
+                "互斥规则 DC1 与 DC2 被拆到两个订单同时使用",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 长裤(pants)x1",
+                "订单1: 依次使用: DC1 → FR1 → PT1",
+                "订单1: 应付 58.20 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 123.50 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "PT1"
+                    ],
+                    "gross": 129,
+                    "final": 58.2,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 25.8,
+                            "payable_after": 103.2
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 78.2
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 58.2
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 0.5,
+            "total_cost": 21.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 糖果(candy)x1",
+                "依次使用: PT1 → FR4",
+                "应付 0.50 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR4"
+                    ],
+                    "gross": 25,
+                    "final": 0.5,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 12.5,
+                            "payable_after": 12.5
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 0.5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 0.8,
+            "total_cost": 34,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x1, 牛奶(milk)x2, 薯片(chips)x1, 饼干(biscuit)x2",
+                "依次使用: DC1 → PT1 → FR4 → FR3",
+                "应付 0.80 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 1,
+                        "milk": 2,
+                        "chips": 1,
+                        "biscuit": 2
+                    },
+                    "sequence": [
+                        "DC1",
+                        "PT1",
+                        "FR4",
+                        "FR3"
+                    ],
+                    "gross": 51,
+                    "final": 0.8,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 10.2,
+                            "payable_after": 40.8
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20.8
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 8.8
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 0.8
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 1,
+            "total_cost": 31,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 薯片(chips)x2, 饼干(biscuit)x1",
+                "依次使用: PT1 → FR4 → FR3",
+                "应付 1.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 2,
+                        "biscuit": 1
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR4",
+                        "FR3"
+                    ],
+                    "gross": 41,
+                    "final": 1,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 21
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 9
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 1.5,
+            "total_cost": 2,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x1",
+                "依次使用: PT1",
+                "应付 1.50 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 1
+                    },
+                    "sequence": [
+                        "PT1"
+                    ],
+                    "gross": 3,
+                    "final": 1.5,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 1.5,
+                            "payable_after": 1.5
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 2,
+            "total_cost": 12.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 薯片(chips)x1, 饼干(biscuit)x1, 糖果(candy)x1",
+                "依次使用: PT1 → FR3",
+                "应付 2.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 1,
+                        "biscuit": 1,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR3"
+                    ],
+                    "gross": 20,
+                    "final": 2,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 10,
+                            "payable_after": 10
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 8.3,
+            "total_cost": 67,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x2, 牛奶(milk)x2, T恤(shirt)x1",
+                "依次使用: DC2 → FR1 → FR2 → PT1 → FR4",
+                "应付 8.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR2",
+                        "PT1",
+                        "FR4"
+                    ],
+                    "gross": 109,
+                    "final": 8.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 23.7,
+                            "payable_after": 85.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 60.3
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 40.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20.3
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 8.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 12,
+            "total_cost": 34,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x1, 薯片(chips)x2, 饼干(biscuit)x2, 糖果(candy)x2",
+                "依次使用: DC1 → PT1 → FR3",
+                "应付 12.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 1,
+                        "chips": 2,
+                        "biscuit": 2,
+                        "candy": 2
+                    },
+                    "sequence": [
+                        "DC1",
+                        "PT1",
+                        "FR3"
+                    ],
+                    "gross": 50,
+                    "final": 12,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 10,
+                            "payable_after": 40
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 20
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 17,
+            "total_cost": 29,
+            "legal_single_best": 18,
+            "notes": [
+                "拆单合计 17.00 元 < 单订单最优 18.00 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 可乐(cola)x2, 薯片(chips)x1, 饼干(biscuit)x1, 糖果(candy)x1",
+                "订单1: 依次使用: PT1 → FR3",
+                "订单1: 应付 5.00 元",
+                "订单2: 加购: 薯片(chips)x1, 饼干(biscuit)x1, 糖果(candy)x1",
+                "订单2: 依次使用: FR3",
+                "订单2: 应付 12.00 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 17.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "chips": 1,
+                        "biscuit": 1,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "PT1",
+                        "FR3"
+                    ],
+                    "gross": 26,
+                    "final": 5,
+                    "steps": [
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 13,
+                            "payable_after": 13
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 5
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 1,
+                        "biscuit": 1,
+                        "candy": 1
+                    },
+                    "sequence": [
+                        "FR3"
+                    ],
+                    "gross": 20,
+                    "final": 12,
+                    "steps": [
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 12
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 18.2,
+            "total_cost": 74,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 可乐(cola)x2, 牛奶(milk)x2, 糖果(candy)x2, T恤(shirt)x1",
+                "依次使用: DC1 → FR1 → FR2 → PT1 → FR4",
+                "应付 18.20 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2,
+                        "candy": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR2",
+                        "PT1",
+                        "FR4"
+                    ],
+                    "gross": 119,
+                    "final": 18.2,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 23.8,
+                            "payable_after": 95.2
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 70.2
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 50.2
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 30.2
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 18.2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 22.3,
+            "total_cost": 63,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 牛奶(milk)x2, T恤(shirt)x1",
+                "依次使用: DC2 → FR1 → FR4 → PT1",
+                "应付 22.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 103,
+                    "final": 22.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 23.7,
+                            "payable_after": 79.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 54.3
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 42.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 22.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 23,
+            "total_cost": 76,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "依次使用: DC1 → FR1 → FR4 → FR3 → PT1",
+                "应付 23.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR4",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 110,
+                    "final": 23,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 22,
+                            "payable_after": 88
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 63
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 51
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 43
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 23
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 23.3,
+            "total_cost": 58,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "依次使用: DC2 → FR1 → FR3 → PT1",
+                "应付 23.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 100,
+                    "final": 23.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 23.7,
+                            "payable_after": 76.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 51.3
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 43.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 23.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 26.2,
+            "total_cost": 72,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 薯片(chips)x1, 饼干(biscuit)x1, T恤(shirt)x1",
+                "依次使用: DC1 → FR1 → FR4 → PT1",
+                "应付 26.20 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 1,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 104,
+                    "final": 26.2,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 20.8,
+                            "payable_after": 83.2
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 58.2
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 46.2
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 26.2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 26.3,
+            "total_cost": 68.6,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 可乐(cola)x2, 矿泉水(water)x2, 牛奶(milk)x2, T恤(shirt)x1",
+                "依次使用: DC2 → FR2 → FR4 → PT1",
+                "应付 26.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "cola": 2,
+                        "water": 2,
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR2",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 99,
+                    "final": 26.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 20.7,
+                            "payable_after": 78.3
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 58.3
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 46.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 26.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 28.3,
+            "total_cost": 45,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: T恤(shirt)x1",
+                "依次使用: DC2 → PT1",
+                "应付 28.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "PT1"
+                    ],
+                    "gross": 69,
+                    "final": 28.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 20.7,
+                            "payable_after": 48.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 28.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 30.2,
+            "total_cost": 66.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 薯片(chips)x2, 饼干(biscuit)x2, 糖果(candy)x1, T恤(shirt)x1",
+                "依次使用: DC1 → FR1 → FR3 → PT1",
+                "应付 30.20 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 2,
+                        "candy": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC1",
+                        "FR1",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 104,
+                    "final": 30.2,
+                    "steps": [
+                        {
+                            "rule": "DC1",
+                            "desc": "8.0折券(门槛50.00,封顶40.00,全场)",
+                            "off": 20.8,
+                            "payable_after": 83.2
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 58.2
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 50.2
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 30.2
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 36.3,
+            "total_cost": 63,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, T恤(shirt)x1",
+                "依次使用: DC2 → FR4 → PT1",
+                "应付 36.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 89,
+                    "final": 36.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 20.7,
+                            "payable_after": 68.3
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 56.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 36.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 40.3,
+            "total_cost": 57.5,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 薯片(chips)x1, 饼干(biscuit)x1, 糖果(candy)x1, T恤(shirt)x1",
+                "依次使用: DC2 → FR3 → PT1",
+                "应付 40.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "chips": 1,
+                        "biscuit": 1,
+                        "candy": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 89,
+                    "final": 40.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 20.7,
+                            "payable_after": 68.3
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 60.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 40.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 45.3,
+            "total_cost": 70,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "加购: 长裤(pants)x1",
+                "依次使用: DC2 → FR1 → PT1",
+                "应付 45.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "PT1"
+                    ],
+                    "gross": 129,
+                    "final": 45.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 45.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 66.3,
+            "total_cost": 101,
+            "legal_single_best": null,
+            "notes": [
+                "引擎未做零值截断(clamp_at_zero=false)"
+            ],
+            "repro": [
+                "使用「gold」会员账号",
+                "加购: 牛奶(milk)x2, 薯片(chips)x2, 饼干(biscuit)x1, 长裤(pants)x1",
+                "依次使用: DC2 → FR1 → FR4 → FR3 → PT1",
+                "应付 66.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "chips": 2,
+                        "biscuit": 1,
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR4",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 170,
+                    "final": 66.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 131.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 106.3
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 94.3
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 86.3
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 66.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 89.3,
+            "total_cost": 121,
+            "legal_single_best": 90.6,
+            "notes": [
+                "拆单合计 89.30 元 < 单订单最优 90.60 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 牛奶(milk)x2, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → FR4 → PT1",
+                "订单1: 应付 46.00 元",
+                "订单2: 加购: 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "订单2: 依次使用: DC2 → FR1 → FR3",
+                "订单2: 应付 43.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 89.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 103,
+                    "final": 46,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 78
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 66
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 46
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR3"
+                    ],
+                    "gross": 100,
+                    "final": 43.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 23.7,
+                            "payable_after": 76.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 51.3
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 43.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 97.3,
+            "total_cost": 137,
+            "legal_single_best": 98.6,
+            "notes": [
+                "拆单合计 97.30 元 < 单订单最优 98.60 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 可乐(cola)x2, 牛奶(milk)x2, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → FR2 → FR4 → PT1",
+                "订单1: 应付 32.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 97.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "FR2",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 109,
+                    "final": 32,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 84
+                        },
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 64
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 52
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 32
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 111.3,
+            "total_cost": 133,
+            "legal_single_best": 112.6,
+            "notes": [
+                "拆单合计 111.30 元 < 单订单最优 112.60 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 牛奶(milk)x2, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → FR4 → PT1",
+                "订单1: 应付 46.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 111.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 103,
+                    "final": 46,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 78
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 66
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 46
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 112.3,
+            "total_cost": 128,
+            "legal_single_best": 113.6,
+            "notes": [
+                "拆单合计 112.30 元 < 单订单最优 113.60 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → FR3 → PT1",
+                "订单1: 应付 47.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 112.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 100,
+                    "final": 47,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 75
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 67
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 47
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "below_cost",
+            "type_label": "实付低于成本",
+            "severity": 2,
+            "total_final": 120.3,
+            "total_cost": 129,
+            "legal_single_best": 121.6,
+            "notes": [
+                "拆单合计 120.30 元 < 单订单最优 121.60 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 牛奶(milk)x1, 饼干(biscuit)x1, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → PT1",
+                "订单1: 应付 55.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 65.30 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 120.30 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "milk": 1,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "PT1"
+                    ],
+                    "gross": 100,
+                    "final": 55,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 75
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 55
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 65.3,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 38.7,
+                            "payable_after": 90.3
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 65.3
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "split_arbitrage",
+            "type_label": "拆单套利",
+            "severity": 1,
+            "total_final": 197.6,
+            "total_cost": 185,
+            "legal_single_best": 202,
+            "notes": [
+                "拆单合计 197.60 元 < 单订单最优 202.00 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 使用「gold」会员账号",
+                "订单1: 加购: T恤(shirt)x1, 长裤(pants)x1",
+                "订单1: 依次使用: DC2 → FR1 → PT1",
+                "订单1: 应付 93.60 元",
+                "订单2: 使用「gold」会员账号",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: FR1",
+                "订单2: 应付 104.00 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 197.60 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "shirt": 1,
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "PT1"
+                    ],
+                    "gross": 198,
+                    "final": 93.6,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 59.4,
+                            "payable_after": 138.6
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 113.6
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 93.6
+                        }
+                    ]
+                },
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 104,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 104
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "split_arbitrage",
+            "type_label": "拆单套利",
+            "severity": 1,
+            "total_final": 202.6,
+            "total_cost": 198,
+            "legal_single_best": 225,
+            "notes": [
+                "拆单合计 202.60 元 < 单订单最优 225.00 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 薯片(chips)x2, 饼干(biscuit)x1, T恤(shirt)x1",
+                "订单1: 依次使用: FR1 → FR3 → PT1",
+                "订单1: 应付 47.00 元",
+                "订单2: 加购: 长裤(pants)x2",
+                "订单2: 依次使用: DC2 → FR1",
+                "订单2: 应付 155.60 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 202.60 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "chips": 2,
+                        "biscuit": 1,
+                        "shirt": 1
+                    },
+                    "sequence": [
+                        "FR1",
+                        "FR3",
+                        "PT1"
+                    ],
+                    "gross": 100,
+                    "final": 47,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 75
+                        },
+                        {
+                            "rule": "FR3",
+                            "desc": "满20.00减8.00(food,门槛基数:original)",
+                            "off": 8,
+                            "payable_after": 67
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 47
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 2
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1"
+                    ],
+                    "gross": 258,
+                    "final": 155.6,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 77.4,
+                            "payable_after": 180.6
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 155.6
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "split_arbitrage",
+            "type_label": "拆单套利",
+            "severity": 1,
+            "total_final": 205.6,
+            "total_cost": 203,
+            "legal_single_best": 210,
+            "notes": [
+                "拆单合计 205.60 元 < 单订单最优 210.00 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 使用「gold」会员账号",
+                "订单1: 加购: 牛奶(milk)x2, T恤(shirt)x1, 长裤(pants)x1",
+                "订单1: 依次使用: DC2 → FR1 → FR4 → PT1",
+                "订单1: 应付 101.60 元",
+                "订单2: 使用「gold」会员账号",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: FR1",
+                "订单2: 应付 104.00 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 205.60 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "milk": 2,
+                        "shirt": 1,
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "DC2",
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 218,
+                    "final": 101.6,
+                    "steps": [
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 59.4,
+                            "payable_after": 158.6
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 133.6
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 121.6
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 101.6
+                        }
+                    ]
+                },
+                {
+                    "member_level": "gold",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 104,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 104
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "split_arbitrage",
+            "type_label": "拆单套利",
+            "severity": 1,
+            "total_final": 264,
+            "total_cost": 252,
+            "legal_single_best": 289,
+            "notes": [
+                "拆单合计 264.00 元 < 单订单最优 289.00 元",
+                "积分池按单订单独占估算(下界)"
+            ],
+            "repro": [
+                "订单1: 加购: 可乐(cola)x2, 牛奶(milk)x2, T恤(shirt)x2, 长裤(pants)x1",
+                "订单1: 依次使用: FR2 → DC2 → FR1 → FR4 → PT1",
+                "订单1: 应付 160.00 元",
+                "订单2: 加购: 长裤(pants)x1",
+                "订单2: 依次使用: FR1",
+                "订单2: 应付 104.00 元",
+                "两单合并结算(同一用户、同一收货地址),合计实付 264.00 元"
+            ],
+            "orders": [
+                {
+                    "member_level": "none",
+                    "items": {
+                        "cola": 2,
+                        "milk": 2,
+                        "shirt": 2,
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "FR2",
+                        "DC2",
+                        "FR1",
+                        "FR4",
+                        "PT1"
+                    ],
+                    "gross": 317,
+                    "final": 160,
+                    "steps": [
+                        {
+                            "rule": "FR2",
+                            "desc": "满30.00减20.00(drink,门槛基数:original)",
+                            "off": 20,
+                            "payable_after": 297
+                        },
+                        {
+                            "rule": "DC2",
+                            "desc": "7.0折券(门槛0.00,封顶80.00,apparel)",
+                            "off": 80,
+                            "payable_after": 217
+                        },
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 192
+                        },
+                        {
+                            "rule": "FR4",
+                            "desc": "满20.00减12.00(drink,门槛基数:original)",
+                            "off": 12,
+                            "payable_after": 180
+                        },
+                        {
+                            "rule": "PT1",
+                            "desc": "积分抵现(100分=1元,最高抵50%)",
+                            "off": 20,
+                            "payable_after": 160
+                        }
+                    ]
+                },
+                {
+                    "member_level": "none",
+                    "items": {
+                        "pants": 1
+                    },
+                    "sequence": [
+                        "FR1"
+                    ],
+                    "gross": 129,
+                    "final": 104,
+                    "steps": [
+                        {
+                            "rule": "FR1",
+                            "desc": "满100.00减25.00(全场,门槛基数:original)",
+                            "off": 25,
+                            "payable_after": 104
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
